@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration >
+	<classPathEntry location="D:\wookTools\apache-maven-3.3.3\repository\org\xerial\sqlite-jdbc\3.8.11.2\sqlite-jdbc-3.8.11.2.jar"/>
+
+  <context id="context">
+    <jdbcConnection driverClass="org.sqlite.JDBC" connectionURL="jdbc:sqlite:poetry.db" userId="" password="" ></jdbcConnection>
+    
+    <javaModelGenerator targetPackage="com.lin.entity.peotry" targetProject="D:\wookTools\eclipse-64bit\workspace\poetry\src\main\java" >
+    	<property name="enableSubPackages" value="true"/>
+    </javaModelGenerator>
+    
+    <sqlMapGenerator targetPackage="com.lin.mapper.peotry" targetProject="D:\wookTools\eclipse-64bit\workspace\poetry\src\main\java" >
+    	<property name="enableSubPackages" value="true"/>
+    </sqlMapGenerator>
+    
+    <javaClientGenerator targetPackage="com.lin.dao.peotry" targetProject="D:\wookTools\eclipse-64bit\workspace\poetry\src\main\java" type="XMLMAPPER" >
+    	<property name="enableSubPackages" value="true"/>
+    </javaClientGenerator>
+    
+    <table tableName="word_final" domainObjectName="WordFinalBean">
+      	<property name="useActualColumnNames" value="true"/> 
+    	<generatedKey column="id" sqlStatement="JDBC"/>
+    </table>
+    
+    <table schema="" tableName="poetry_word" domainObjectName="PoetryWordBean">
+<!--     	<property name="useActualColumnNames" value="true"/>  -->
+    	<generatedKey column="id" sqlStatement="JDBC"/>
+    	
+    	<oneToOne mappingTable="word_final" column="word_final_type" joinColumn="final_type"/>
+    </table>
+  </context>
+</generatorConfiguration>
